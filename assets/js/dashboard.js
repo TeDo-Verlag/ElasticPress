@@ -329,9 +329,9 @@ function sync() {
 		method: 'post',
 		url: ajaxurl,
 		data: {
-			action: 'ep_index',
-			feature_sync: featureSync,
-			nonce: epDash.nonce
+			'action': 'ep_index',
+			'feature_sync': featureSync,
+			'nonce': epDash.nonce
 		}
 	} ).done( ( response ) => {
 		if ( 'sync' !== syncStatus ) {

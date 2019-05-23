@@ -82,17 +82,17 @@ function buildSearchQuery( searchText, postType, postStatus, searchFields ) {
 	}
 
 	var query = {
-		sort: [
+		'sort': [
 			{
-				_score: {
-					order: 'desc'
+				'_score': {
+					'order': 'desc'
 				}
 			}
 		],
-		query: {
-			multi_match: {
-				query: searchText,
-				fields: searchFields
+		'query': {
+			'multi_match': {
+				'query': searchText,
+				'fields': searchFields
 			}
 		}
 	};
@@ -107,19 +107,19 @@ function buildSearchQuery( searchText, postType, postStatus, searchFields ) {
 	}
 
 	// Then add it as a filter to the end of the query
-	query.post_filter = {
-		bool: {
-			must: [
+	query['post_filter'] = {
+		'bool': {
+			'must': [
 				{
-					terms: { post_status: postStatus }
+					'terms': { 'post_status': postStatus }
 				}
 			]
 		}
 	};
 
 	if ( 'all' !== postType ) {
-		query.post_filter.bool.must.push( {
-			terms: { 'post_type.raw': postType }
+		query['post_filter']['bool']['must'].push( {
+			'terms': { 'post_type.raw': postType }
 		} );
 	}
 
